@@ -1,7 +1,7 @@
 library(PerformanceAnalytics)
 library(ggplot2)
 library(miscset)
-
+library(ROCR)
 
 ############################################################
 # 1. Consider the German credit dataset from Mini Project 2. 
@@ -126,6 +126,8 @@ round(all_criterions, 3)
 
 # (c) Write the final model in equation form. 
 final_model <- mini_model_credit
+coef_final_model <- coef(final_model)
+(eqn <- paste("Default =", paste(round(coef_final_model[1],2), paste(round(coef_final_model[-1],2), names(coef_final_model[1]), sep=" * ", collapse=" + "), sep=" + "), "+error"))
 #Provide a summary of estimates of the regression coefficients, 
 #the standard errors of the estimates, 
 summary(final_model)
@@ -139,3 +141,25 @@ prediction <- ifelse(prediction_german_credit >= 0.5, "1", "0")
 confusion_matrix <- table(prediction, german_credit[, 1])
 training_error <- mean(prediction!=german_credit$Default)
 training_error
+
+# Plot Logistic Regression Model for German Credit
+#getting prediciton and performance
+german_pred <- prediction(prediction_german_credit, german_credit$Default)
+german_perf <- performance(german_pred,"tpr","fpr")
+german_auc <- performance(german_pred, measure = "auc")
+
+#getting auc value
+auc<- german_auc@y.values[[1]]
+auc = round(auc, 3)
+title <- paste("ROC Curv For Default Classification using Logistic Regression\n AUC = ", auc )   
+
+#plotting roc curve
+plot(german_perf,col="red")
+title(main = title)
+abline(a = 0, b = 1)
+legend("bottomright",
+       legend=c("Logistic Regression"),
+       col=c("red"),
+       lty=c(1))
+
+
