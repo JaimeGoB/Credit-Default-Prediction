@@ -10,7 +10,7 @@ In this plot we are able to the see the amount of people that defaulted and did 
 
 ### Frequency Plots for Categorial Variables in Dataset
 
-<img src="https://github.com/JaimeGoB/Credit-Default-Prediction/blob/main/plots/categorial_frequency.png" width="700" height="700" />
+<img src="https://github.com/JaimeGoB/Credit-Default-Prediction/blob/main/plots/categorial_frequency.png" />
 
 ### Correlation Plots for Numerical Variables in Dataset
 
