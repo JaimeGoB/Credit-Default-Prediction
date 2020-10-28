@@ -16,7 +16,7 @@
 
 ## Comparing Models of Different Sizes
 
-<img src="https://github.com/JaimeGoB/Credit-Default-Prediction/blob/main/plots/ic.png" width="150" height="150" />
+<img src="https://github.com/JaimeGoB/Credit-Default-Prediction/blob/main/plots/ic.png" width="250" height="150" />
 
 ## Results
 
